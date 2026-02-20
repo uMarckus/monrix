@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONRIX - Consultorías y Desarrollo</title>
+    <link rel="icon" href="LogoBar1.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        #top-header {
+            background-color: #ffff00; /* Amarillo chillón */
+            color: #333;
+            text-align: center;
+            padding: 3px 0; /* Más pequeño */
+            font-size: 12px; /* Más pequeño */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #top-header .message {
+            margin-right: 20px;
+        }
+        #top-header .gratis {
+            font-weight: bold;
+            color: #ff0000; /* Resaltado en rojo */
+            cursor: pointer;
+        }
+        #countdown {
+            font-weight: bold;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 10px; /* Reducido padding lateral aún más */
+            position: fixed;
+            width: 100%;
+            top: 20px; /* Ajustado por top-header más pequeño */
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        #logo {
+            width: 120px; /* Reducido tamaño del logo para más espacio */
+        }
+        #logo img {
+            width: 100%;
+            height: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0 0 0 20px; /* Reducido margen izquierdo para centrar mejor */
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 15px; /* Reducido espaciado entre items */
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px; /* Reducido tamaño de fuente para evitar desbordes */
+        }
+        section {
+            padding: 80px 60px; /* Más margen en los costados */
+            height: 100vh; /* Pantalla completa */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #inicio {
+            background-color: #f4f4f4;
+            margin-top: 80px; /* Compensar top-header + navbar */
+        }
+        #servicios {
+            background-color: #fff;
+        }
+        #cursos {
+            background-color: #f4f4f4;
+        }
+        #contacto {
+            background-color: #fff;
+        }
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .curso-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .curso-card h3 {
+            margin-top: 0;
+        }
+        .curso-card .cta {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px; /* Cambiado a derecha */
+            z-index: 1000;
+        }
+        .whatsapp-float img {
+            width: 60px;
+            height: 60px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        /* Estilo de scrollbar más delgada */
+        ::-webkit-scrollbar {
+            width: 4px; /* Más delgada (de 6px a 4px) */
+        }
+        ::-webkit-scrollbar-track {
+            background: #f4f4f4; /* Estilo claro */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; /* Color del thumb */
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="top-header">
+        <span class="message">Obtenga un descuento y una consultoría <span class="gratis" onclick="window.open('https://wa.me/59171852467?text=llegue%20a%20tiempo%20para%20la%20consultoria', '_blank')">gratis</span>.</span>
+        <span id="countdown"></span>
+    </div>
+
+    <header>
+        <div id="logo">
+            <img src="MonrixLogo.png" alt="MONRIX Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h1>Bienvenido a MONRIX</h1>
+        <p>En MONRIX, transformamos tus ideas en realidades digitales. Con nuestra expertise en consultorías estratégicas, ofrecemos soluciones personalizadas que impulsan el crecimiento de tu negocio. Imagina aumentar tus ventas un 30% con un sitio web optimizado o automatizar procesos con apps de escritorio que ahorran horas de trabajo. Únete a cientos de clientes satisfechos y descubre por qué somos líderes en innovación. ¡No esperes más, contáctanos hoy y obtén una consultoría inicial gratuita!</p>
+        <!-- Estrategia de marketing: Enfoque en beneficios, CTA, social proof placeholder -->
+    </section>
+
+    <section id="servicios">
+        <h1>Nuestros Servicios</h1>
+        <p>Ofrecemos servicios premium diseñados para maximizar tu eficiencia y competitividad. Cada solución está respaldada por años de experiencia y tecnología de vanguardia.</p>
+        <ul>
+            <li><strong>Consultorías Personalizadas:</strong> Análisis profundo para identificar oportunidades de crecimiento, con recomendaciones accionables que generan ROI rápido.</li>
+            <li><strong>Creación de Páginas Web:</strong> Sitios responsivos, SEO-optimizados que convierten visitantes en clientes leales.</li>
+            <li><strong>Aplicaciones de Escritorio:</strong> Software robusto y seguro para operaciones internas, reduciendo costos operativos hasta en un 40%.</li>
+            <li><strong>Sistemas CRM:</strong> Gestión de clientes inteligente que mejora la retención y aumenta las ventas cruzadas.</li>
+            <li><strong>Plataformas LMS:</strong> Soluciones de e-learning que facilitan la capacitación, mejorando el rendimiento de tu equipo.</li>
+        </ul>
+        <p>Elige MONRIX y ve resultados reales. ¡Agenda una demo gratuita ahora!</p>
+        <!-- Marketing: Beneficios cuantificables, CTA -->
+    </section>
+
+    <section id="cursos">
+        <h1>Nuestros Cursos</h1>
+        <p>Aprende con expertos y eleva tus habilidades. Nuestros cursos están diseñados para profesionales como tú, con contenido práctico y certificación al final.</p>
+        <div class="cursos-grid">
+            <div class="curso-card">
+                <h3>Desarrollo Web Básico</h3>
+                <p>Aprende HTML, CSS y JS para crear sitios web impresionantes. Ideal para principiantes.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+            <div class="curso-card">
+                <h3>Desarrollo Web Avanzado</h3>
+                <p>Frameworks como React y Node.js para apps web escalables.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+            <div class="curso-card">
+                <h3>Implementación de CRM</h3>
+                <p>Configura y optimiza sistemas CRM para tu negocio.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+            <div class="curso-card">
+                <h3>Creación de LMS</h3>
+                <p>Diseña plataformas de aprendizaje en línea efectivas.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+            <div class="curso-card">
+                <h3>Aplicaciones de Escritorio con Electron</h3>
+                <p>Desarrolla apps cross-platform con tecnologías web.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+            <div class="curso-card">
+                <h3>Consultoría Digital Estratégica</h3>
+                <p>Estrategias para digitalizar tu empresa con éxito.</p>
+                <a href="#contacto" class="cta">Inscríbete Ahora</a>
+            </div>
+        </div>
+        <!-- Marketing: Tarjetas atractivas con CTAs -->
+    </section>
+
+    <section id="contacto">
+        <h1>Contacto</h1>
+        <p>¿Listo para impulsar tu negocio? Llena el formulario o chatea con nosotros. Respuesta en menos de 24 horas garantizada.</p>
+        <form action="mailto:marcosdelpongo@gmail.com" method="post" enctype="text/plain">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/59171852467" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MONRIX. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Cuenta regresiva con persistencia
+        const totalSeconds = 6 * 3600 + 34 * 60 + 43; // 6h 34m 43s
+        const topHeader = document.getElementById('top-header');
+        const countdownElement = document.getElementById('countdown');
+
+        function startCountdown() {
+            const now = new Date();
+            const today = now.toDateString();
+            let endTime = localStorage.getItem('countdownEndTime');
+            let storedDate = localStorage.getItem('countdownDate');
+
+            if (storedDate !== today || !endTime) {
+                // Resetear si es un nuevo día
+                endTime = now.getTime() + totalSeconds * 1000;
+                localStorage.setItem('countdownEndTime', endTime);
+                localStorage.setItem('countdownDate', today);
+            }
+
+            const interval = setInterval(() => {
+                const currentTime = new Date().getTime();
+                const remaining = endTime - currentTime;
+
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    topHeader.style.display = 'none';
+                    // Esperar hasta el próximo día para resetear
+                } else {
+                    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+                    const seconds = Math.floor((remaining / 1000) % 60);
+                    countdownElement.textContent = `Tiempo restante: ${hours}h ${minutes}m ${seconds}s`;
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+    </script>
+
+</body>
+</html>
